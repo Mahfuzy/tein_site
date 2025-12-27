@@ -1,0 +1,239 @@
+@import "tailwindcss";
+
+:root {
+  /* NDC Brand Colors - Authoritative Political Movement */
+  --ndc-red-primary: #B71C1C;
+  /* Deep authoritative red */
+  --ndc-red-dark: #8B0000;
+  /* Darker red for depth */
+  --ndc-red-light: #D32F2F;
+  /* Lighter red for accents */
+  --ndc-black: #0A0A0A;
+  /* Near-black for institutional feel */
+  --ndc-white: #FFFFFF;
+  /* Pure white for contrast */
+  --ndc-gray-dark: #1A1A1A;
+  /* Dark gray for secondary elements */
+  --ndc-gray-medium: #666666;
+  /* Medium gray for text hierarchy */
+  --ndc-gray-light: #E0E0E0;
+  /* Light gray for borders */
+
+  /* Strategic accent - green reserved for secondary brand */
+  --ndc-green: #1B5E20;
+  /* Dark green, used sparingly */
+
+  /* High-contrast backgrounds - no softness */
+  --background: #FFFFFF;
+  /* Pure white, institutional */
+  --background-secondary: #F5F5F5;
+  /* Minimal gray tint */
+  --background-dark: var(--ndc-black);
+  --foreground: var(--ndc-black);
+  --foreground-secondary: var(--ndc-gray-medium);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--ndc-red-primary);
+  --color-accent: var(--ndc-red-dark);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--ndc-black);
+    --background-secondary: var(--ndc-gray-dark);
+    --foreground: var(--ndc-white);
+    --foreground-secondary: var(--ndc-gray-light);
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 450;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* NDC Color Utilities */
+.bg-ndc-red {
+  background-color: var(--ndc-red-primary);
+}
+
+.bg-ndc-red-dark {
+  background-color: var(--ndc-red-dark);
+}
+
+.bg-ndc-black {
+  background-color: var(--ndc-black);
+}
+
+.text-ndc-red {
+  color: var(--ndc-red-primary);
+}
+
+.text-ndc-black {
+  color: var(--ndc-black);
+}
+
+.border-ndc-red {
+  border-color: var(--ndc-red-primary);
+}
+
+.border-ndc-black {
+  border-color: var(--ndc-black);
+}
+
+/* NDC Authoritative Gradients - Bold & High Contrast */
+.bg-ndc-gradient {
+  background-image: linear-gradient(135deg, var(--ndc-red-dark) 0%, var(--ndc-red-primary) 100%);
+}
+
+.bg-ndc-gradient-hero {
+  background-image: linear-gradient(135deg, var(--ndc-black) 0%, var(--ndc-red-dark) 50%, var(--ndc-red-primary) 100%);
+}
+
+/* Button Styles - Assertive Political Movement */
+.btn-primary {
+  background-color: var(--ndc-red-primary);
+  color: var(--ndc-white);
+  border: 2px solid var(--ndc-red-primary);
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--ndc-red-dark);
+  border-color: var(--ndc-red-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(183, 28, 28, 0.4);
+}
+
+.btn-secondary {
+  background-color: var(--ndc-black);
+  color: var(--ndc-white);
+  border: 2px solid var(--ndc-black);
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--ndc-gray-dark);
+  border-color: var(--ndc-gray-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(10, 10, 10, 0.4);
+}
+
+/* Ring/Focus Utilities */
+.ring-primary {
+  --tw-ring-color: color-mix(in oklab, var(--ndc-red-primary) 50%, transparent);
+}
+
+.ring-accent {
+  --tw-ring-color: color-mix(in oklab, var(--ndc-red-dark) 50%, transparent);
+}
+
+/* Card Enhancements - Institutional & Structured */
+.card-ndc {
+  background: var(--ndc-white);
+  border: 2px solid var(--ndc-gray-light);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.card-ndc:hover {
+  border-color: var(--ndc-red-primary);
+  box-shadow: 0 4px 12px rgba(183, 28, 28, 0.15);
+  transform: translateY(-1px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .card-ndc {
+    background: var(--ndc-gray-dark);
+    border-color: var(--ndc-gray-medium);
+  }
+
+  .card-ndc:hover {
+    background: var(--ndc-black);
+    border-color: var(--ndc-red-primary);
+  }
+}
+
+/* Accent Border Effects - Bold Political Branding */
+.accent-border-red {
+  position: relative;
+  border-left: 4px solid var(--ndc-red-primary);
+}
+
+.accent-border-top-red {
+  border-top: 4px solid var(--ndc-red-primary);
+}
+
+.accent-border-bottom-red {
+  border-bottom: 4px solid var(--ndc-red-primary);
+}
+
+/* Animation Utilities - Controlled & Purposeful */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s ease-out;
+}
+
+/* Smooth transitions for all interactive elements - Faster, more responsive */
+a,
+button,
+.interactive {
+  transition: all 0.15s ease;
+}
+
+/* Typography Enhancements - Bold Political Messaging */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.text-gradient-ndc {
+  background: linear-gradient(135deg, var(--ndc-red-primary) 0%, var(--ndc-red-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
