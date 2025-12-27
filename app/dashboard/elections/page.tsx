@@ -11,8 +11,7 @@ import CandidateCard from "@/components/elections/CandidateCard";
 import VotingProgress from "@/components/elections/VotingProgress";
 import VoteSummary from "@/components/elections/VoteSummary";
 import ResultsCard from "@/components/elections/ResultsCard";
-import { getTimeRemaining } from "@/lib/electionUtils";
-import { AlertCircle, Clock, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
+import { AlertCircle, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function ElectionsPage() {
@@ -210,12 +209,6 @@ export default function ElectionsPage() {
     return (
       <div className="space-y-6">
         <h1 className="text-2xl font-bold">{election.title}</h1>
-        {isVotingOpen && (
-          <div className="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400">
-            <Clock className="w-4 h-4" />
-            <span>{timeRemaining}</span>
-          </div>
-        )}
         <Card>
           <CardHeader>
             <CardTitle>Verify Membership</CardTitle>
@@ -251,13 +244,6 @@ export default function ElectionsPage() {
     return (
       <div className="space-y-6">
         <h1 className="text-2xl font-bold">{election.title}</h1>
-        {isVotingOpen && (
-          <div className="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400">
-            <Clock className="w-4 h-4" />
-            <span>{timeRemaining}</span>
-          </div>
-        )}
-
         <Card>
           <CardContent className="p-6 space-y-6">
             <VoteSummary
