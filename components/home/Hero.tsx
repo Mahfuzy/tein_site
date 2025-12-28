@@ -108,13 +108,11 @@ export default function Hero() {
                 <ChevronRight className="h-5 w-5" />
               </Button>
             </Link>
-            <a href="#about">
-              <Button
-                variant="outline"
-                className="text-base px-10 py-7 bg-transparent backdrop-blur border-2 border-white text-white hover:bg-white hover:text-black"
-              >
-                Our Mission
-              </Button>
+            <a
+              href="#about"
+              className="inline-flex items-center justify-center rounded-sm font-bold uppercase tracking-wide transition-all duration-150 text-base px-10 py-4 bg-transparent backdrop-blur border-2 border-white text-white hover:bg-white hover:!text-black shadow-xl hover:translate-y-[-2px] hover:shadow-lg active:translate-y-0"
+            >
+              Our Mission
             </a>
           </motion.div>
         </motion.div>
