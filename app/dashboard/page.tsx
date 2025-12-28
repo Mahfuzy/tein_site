@@ -15,7 +15,7 @@ export default function DashboardHome() {
   const isExec = authUser && ["President", "Vice President", "Secretary"].includes(authUser.role);
 
   const stats = [
-    { label: "Active Members", value: activeMembers.toString(), href: isExec ? "/approvals" : null },
+    { label: "Active Members", value: activeMembers.toString(), href: isExec ? "/dashboard/approvals" : null },
     { label: "Upcoming Events", value: upcomingEvents.toString(), href: "/dashboard/activities" },
   ];
 

@@ -10,6 +10,14 @@ import { useState } from "react";
 import { useApp } from "@/context/AppContext";
 import { toast } from "sonner";
 
+const demoCredentials = [
+  { role: "President", name: "Ada Lovelace", memberId: "BR\\STU\\25\\00001", password: "password123" },
+  { role: "Vice President", name: "Alan Turing", memberId: "BR\\STU\\25\\00002", password: "password123" },
+  { role: "Secretary", name: "Grace Hopper", memberId: "BR\\STU\\25\\00003", password: "password123" },
+  { role: "ITEC", name: "Tim Berners-Lee", memberId: "BR\\STU\\25\\00004", password: "password123" },
+  { role: "Member", name: "Linus Member", memberId: "BR\\STU\\25\\00005", password: "password123" },
+];
+
 export default function LoginPage() {
   const router = useRouter();
   const { login } = useApp();
@@ -37,14 +45,17 @@ export default function LoginPage() {
     }
   };
 
+  const fillCredentials = (memberId: string, password: string) => {
+    setMemberId(memberId);
+    setPassword(password);
+    setError("");
+  };
+
   return (
-    <div className="mx-auto max-w-md p-6">
+    <div className="mx-auto max-w-md p-6 space-y-4">
       <Card>
         <CardHeader>
           <CardTitle>Member Login</CardTitle>
-          <p className="text-sm text-neutral-500 mt-2">
-            Demo credentials: BR\STU\25\00001 / password123
-          </p>
         </CardHeader>
         <CardContent>
           <form className="space-y-4" onSubmit={submit}>
@@ -77,6 +88,38 @@ export default function LoginPage() {
               Don't have an account? <Link href="/register" className="text-red-600 hover:underline">Register here</Link>
             </div>
           </form>
+        </CardContent>
+      </Card>
+
+      {/* Demo Credentials */}
+      <Card className="border-dashed border-2 border-[var(--ndc-red-primary)]/30 bg-[var(--ndc-red-primary)]/5">
+        <CardHeader className="pb-2">
+          <CardTitle className="text-base">Demo Credentials</CardTitle>
+          <p className="text-xs text-neutral-500">Click any account to auto-fill the login form</p>
+        </CardHeader>
+        <CardContent className="space-y-2">
+          {demoCredentials.map((cred) => (
+            <button
+              key={cred.memberId}
+              type="button"
+              onClick={() => fillCredentials(cred.memberId, cred.password)}
+              className="w-full text-left p-2 rounded border border-neutral-200 bg-white hover:border-[var(--ndc-red-primary)] hover:bg-[var(--ndc-red-primary)]/5 transition-colors group"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <span className="font-semibold text-sm">{cred.role}</span>
+                  <span className="text-neutral-500 text-xs ml-2">({cred.name})</span>
+                </div>
+                <span className="text-xs text-neutral-400 group-hover:text-[var(--ndc-red-primary)]">Click to fill</span>
+              </div>
+              <div className="text-xs text-neutral-500 mt-1 font-mono">
+                {cred.memberId}
+              </div>
+            </button>
+          ))}
+          <p className="text-xs text-neutral-400 text-center pt-2">
+            All accounts use password: <code className="bg-neutral-100 px-1 rounded">password123</code>
+          </p>
         </CardContent>
       </Card>
     </div>

@@ -15,6 +15,7 @@ export default function Sidebar() {
   const baseLinks = [
     { href: "/dashboard", label: "Overview" },
     { href: "/dashboard/activities", label: "Activities" },
+    { href: "/dashboard/events", label: "Events" },
     { href: "/dashboard/executives", label: "Executives" },
     { href: "/dashboard/elections", label: "Vote" },
   ];
@@ -73,10 +74,20 @@ export default function Sidebar() {
         {/* Approvals - Executive only */}
         {isExecutive && (
           <Link
-            href="/approvals"
-            className={`px-2 py-1 rounded ${pathname === "/approvals" ? "bg-neutral-100 dark:bg-neutral-900" : "hover:underline"}`}
+            href="/dashboard/approvals"
+            className={`px-2 py-1 rounded ${pathname === "/dashboard/approvals" ? "bg-neutral-100 dark:bg-neutral-900" : "hover:underline"}`}
           >
             Approvals
+          </Link>
+        )}
+
+        {/* Roles - President/VP only */}
+        {mounted && authUser && ["President", "Vice President"].includes(authUser.role) && (
+          <Link
+            href="/dashboard/roles"
+            className={`px-2 py-1 rounded ${pathname === "/dashboard/roles" ? "bg-neutral-100 dark:bg-neutral-900" : "hover:underline"}`}
+          >
+            Roles
           </Link>
         )}
 

@@ -1,17 +1,24 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Menu, User, LogOut } from "lucide-react";
 import Button from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { useApp } from "@/context/AppContext";
 
 export default function Navbar() {
+  const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
   const { authUser, logout } = useApp();
 
   useEffect(() => setMounted(true), []);
+
+  const handleLogout = () => {
+    logout();
+    router.push("/");
+  };
 
   // Prevent hydration mismatch by not rendering auth-dependent content during SSR
   const showAuthContent = mounted;
@@ -55,7 +62,7 @@ export default function Navbar() {
                 <User className="h-4 w-4" />
                 {authUser.name}
               </span>
-              <Button variant="outline" size="sm" onClick={logout}>
+              <Button variant="outline" size="sm" onClick={handleLogout}>
                 <LogOut className="h-4 w-4 mr-1" />
                 Logout
               </Button>
@@ -91,7 +98,7 @@ export default function Navbar() {
                 <Link href="/dashboard/activities" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">Activities</Link>
                 <Link href="/dashboard/executives" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">Executives</Link>
                 <button
-                  onClick={() => { logout(); setOpen(false); }}
+                  onClick={() => { handleLogout(); setOpen(false); }}
                   className="py-3 px-4 rounded-sm hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase text-left flex items-center gap-2 text-[var(--ndc-red-primary)]"
                 >
                   <LogOut className="h-4 w-4" />
