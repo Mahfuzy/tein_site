@@ -111,7 +111,7 @@ export default function Hero() {
             <a href="#about">
               <Button
                 variant="outline"
-                className="text-base px-10 py-7 bg-transparent backdrop-blur border-2 border-white text-white hover:bg-white hover:text-[var(--ndc-black)]"
+                className="text-base px-10 py-7 bg-transparent backdrop-blur border-2 border-white text-white hover:bg-white hover:text-black"
               >
                 Our Mission
               </Button>
