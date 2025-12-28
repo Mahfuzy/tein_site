@@ -3,7 +3,7 @@ import { Facebook, Instagram, Twitter, Mail, MapPin, Phone } from "lucide-react"
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[var(--ndc-black)] text-white">
+    <footer className="bg-[var(--ndc-black)] text-white z-0">
       {/* Bold red accent line at top */}
       <div className="h-1 bg-[var(--ndc-red-primary)]" />
 

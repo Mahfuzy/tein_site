@@ -107,8 +107,8 @@ export default function LoginPage() {
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="font-semibold text-sm">{cred.role}</span>
-                  <span className="text-neutral-500 text-xs ml-2">({cred.name})</span>
+                  <span className="font-bold text-sm text-[var(--ndc-black)]">{cred.role}</span>
+                  <span className="text-neutral-600 text-xs ml-2">({cred.name})</span>
                 </div>
                 <span className="text-xs text-neutral-400 group-hover:text-[var(--ndc-red-primary)]">Click to fill</span>
               </div>
