@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { useApp } from "@/context/AppContext";
@@ -14,17 +15,20 @@ export default function DashboardHome() {
   const isExec = authUser && ["President", "Vice President", "Secretary"].includes(authUser.role);
 
   const stats = [
-    { label: "Active Members", value: activeMembers.toString() },
-    { label: "Upcoming Events", value: upcomingEvents.toString() },
-    ...(isExec ? [{ label: "Pending Approvals", value: pendingCount.toString() }] : []),
-    { label: "Total Events", value: events.length.toString() },
+    { label: "Active Members", value: activeMembers.toString(), href: isExec ? "/approvals" : null },
+    { label: "Upcoming Events", value: upcomingEvents.toString(), href: "/dashboard/activities" },
   ];
 
   return (
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold">
-          Welcome{authUser ? `, ${authUser.name}` : " to TEIN Dashboard"}
+          Welcome{authUser ? ", " : " to TEIN Dashboard"}
+          {authUser && (
+            <Link href="/dashboard/profile" className="hover:text-[var(--ndc-red-primary)] transition-colors underline-offset-2 hover:underline">
+              {authUser.name}
+            </Link>
+          )}
         </h1>
         {authUser && (
           <p className="text-sm text-neutral-500 mt-1">
@@ -40,14 +44,27 @@ export default function DashboardHome() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: i * 0.05 }}
           >
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-sm text-neutral-500">{s.label}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-extrabold">{s.value}</div>
-              </CardContent>
-            </Card>
+            {s.href ? (
+              <Link href={s.href} className="block group">
+                <Card className="transition-all group-hover:border-[var(--ndc-red-primary)] group-hover:shadow-lg cursor-pointer">
+                  <CardHeader>
+                    <CardTitle className="text-sm text-neutral-500 group-hover:text-[var(--ndc-red-primary)] transition-colors">{s.label}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-3xl font-extrabold">{s.value}</div>
+                  </CardContent>
+                </Card>
+              </Link>
+            ) : (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-sm text-neutral-500">{s.label}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-extrabold">{s.value}</div>
+                </CardContent>
+              </Card>
+            )}
           </motion.div>
         ))}
       </div>

@@ -35,6 +35,14 @@ export default function Navbar() {
             <Link href="/dashboard/executives" className="text-sm font-bold uppercase tracking-wide hover:text-[var(--ndc-red-primary)] transition-colors">Executives</Link>
           </nav>
         )}
+        {showAuthContent && authUser && (
+          <nav className="hidden md:flex items-center gap-8">
+            <Link href="/dashboard" className="text-sm font-bold uppercase tracking-wide hover:text-[var(--ndc-red-primary)] transition-colors">Dashboard</Link>
+            <Link href="/dashboard/elections" className="text-sm font-bold uppercase tracking-wide hover:text-[var(--ndc-red-primary)] transition-colors">Elections</Link>
+            <Link href="/dashboard/activities" className="text-sm font-bold uppercase tracking-wide hover:text-[var(--ndc-red-primary)] transition-colors">Activities</Link>
+            <Link href="/dashboard/executives" className="text-sm font-bold uppercase tracking-wide hover:text-[var(--ndc-red-primary)] transition-colors">Executives</Link>
+          </nav>
+        )}
         <nav className="flex items-center gap-2">
           <div className="md:hidden">
             <Button variant="ghost" size="icon" aria-label="Open menu" onClick={() => setOpen((v) => !v)}>
@@ -42,21 +50,21 @@ export default function Navbar() {
             </Button>
           </div>
           {showAuthContent && authUser ? (
-            <>
-              <span className="hidden md:flex items-center gap-2 text-sm font-semibold">
+            <div className="hidden md:flex items-center gap-2">
+              <span className="flex items-center gap-2 text-sm font-semibold">
                 <User className="h-4 w-4" />
                 {authUser.name}
               </span>
-              <Button variant="outline" size="sm" className="hidden md:flex" onClick={logout}>
+              <Button variant="outline" size="sm" onClick={logout}>
                 <LogOut className="h-4 w-4 mr-1" />
                 Logout
               </Button>
-            </>
+            </div>
           ) : showAuthContent ? (
-            <>
-              <Link href="/register" aria-label="Join TEIN" className="hidden md:block"><Button size="sm">Join Now</Button></Link>
-              <Link href="/login" aria-label="Login" className="hidden md:block"><Button variant="outline" size="sm">Login</Button></Link>
-            </>
+            <div className="hidden md:flex items-center gap-2">
+              <Link href="/register" aria-label="Join TEIN"><Button size="sm">Join Now</Button></Link>
+              <Link href="/login" aria-label="Login"><Button variant="outline" size="sm">Login</Button></Link>
+            </div>
           ) : null}
         </nav>
       </div>
@@ -72,25 +80,31 @@ export default function Navbar() {
                 <Link href="/dashboard/executives" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">Executives</Link>
               </>
             )}
-            <div className={`flex gap-2 ${!authUser ? 'pt-3 mt-2 border-t-2 border-[var(--ndc-red-primary)]' : ''}`}>
-              {authUser ? (
-                <>
-                  <div className="flex-1 py-2 px-4 flex items-center gap-2 text-sm font-semibold">
-                    <User className="h-4 w-4" />
-                    {authUser.name}
-                  </div>
-                  <Button size="sm" variant="outline" className="flex-1" onClick={() => { logout(); setOpen(false); }}>
-                    <LogOut className="h-4 w-4 mr-1" />
-                    Logout
-                  </Button>
-                </>
-              ) : (
-                <>
-                  <Link href="/register" onClick={() => setOpen(false)} className="flex-1"><Button size="sm" className="w-full">Join Now</Button></Link>
-                  <Link href="/login" onClick={() => setOpen(false)} className="flex-1"><Button variant="outline" size="sm" className="w-full">Login</Button></Link>
-                </>
-              )}
-            </div>
+            {authUser && (
+              <>
+                <div className="py-3 px-4 flex items-center gap-2 text-sm font-semibold border-b border-gray-200 mb-1">
+                  <User className="h-4 w-4" />
+                  {authUser.name}
+                </div>
+                <Link href="/dashboard" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">Dashboard</Link>
+                <Link href="/dashboard/elections" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">Elections</Link>
+                <Link href="/dashboard/activities" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">Activities</Link>
+                <Link href="/dashboard/executives" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">Executives</Link>
+                <button
+                  onClick={() => { logout(); setOpen(false); }}
+                  className="py-3 px-4 rounded-sm hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase text-left flex items-center gap-2 text-[var(--ndc-red-primary)]"
+                >
+                  <LogOut className="h-4 w-4" />
+                  Logout
+                </button>
+              </>
+            )}
+            {!authUser && (
+              <div className="flex gap-2 pt-3 mt-2 border-t-2 border-[var(--ndc-red-primary)]">
+                <Link href="/register" onClick={() => setOpen(false)} className="flex-1"><Button size="sm" className="w-full">Join Now</Button></Link>
+                <Link href="/login" onClick={() => setOpen(false)} className="flex-1"><Button variant="outline" size="sm" className="w-full">Login</Button></Link>
+              </div>
+            )}
           </div>
         </div>
       )}
