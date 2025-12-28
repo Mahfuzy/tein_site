@@ -36,30 +36,30 @@ export default function Navbar() {
         </Link>
         {showAuthContent && !authUser && (
           <nav className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-sm font-bold uppercase tracking-wide hover:text-[var(--ndc-red-primary)] transition-colors">Home</Link>
-            <Link href="#about" className="text-sm font-bold uppercase tracking-wide hover:text-[var(--ndc-red-primary)] transition-colors">About</Link>
-            <Link href="/dashboard/activities" className="text-sm font-bold uppercase tracking-wide hover:text-[var(--ndc-red-primary)] transition-colors">Activities</Link>
-            <Link href="/dashboard/executives" className="text-sm font-bold uppercase tracking-wide hover:text-[var(--ndc-red-primary)] transition-colors">Executives</Link>
+            <Link href="/" className="text-sm font-bold uppercase tracking-wide text-[var(--ndc-black)] hover:text-[var(--ndc-red-primary)] transition-colors">Home</Link>
+            <Link href="#about" className="text-sm font-bold uppercase tracking-wide text-[var(--ndc-black)] hover:text-[var(--ndc-red-primary)] transition-colors">About</Link>
+            <Link href="/dashboard/activities" className="text-sm font-bold uppercase tracking-wide text-[var(--ndc-black)] hover:text-[var(--ndc-red-primary)] transition-colors">Activities</Link>
+            <Link href="/dashboard/executives" className="text-sm font-bold uppercase tracking-wide text-[var(--ndc-black)] hover:text-[var(--ndc-red-primary)] transition-colors">Executives</Link>
           </nav>
         )}
         {showAuthContent && authUser && (
           <nav className="hidden md:flex items-center gap-8">
-            <Link href="/dashboard" className="text-sm font-bold uppercase tracking-wide hover:text-[var(--ndc-red-primary)] transition-colors">Dashboard</Link>
-            <Link href="/dashboard/elections" className="text-sm font-bold uppercase tracking-wide hover:text-[var(--ndc-red-primary)] transition-colors">Elections</Link>
-            <Link href="/dashboard/activities" className="text-sm font-bold uppercase tracking-wide hover:text-[var(--ndc-red-primary)] transition-colors">Activities</Link>
-            <Link href="/dashboard/executives" className="text-sm font-bold uppercase tracking-wide hover:text-[var(--ndc-red-primary)] transition-colors">Executives</Link>
+            <Link href="/dashboard" className="text-sm font-bold uppercase tracking-wide text-[var(--ndc-black)] hover:text-[var(--ndc-red-primary)] transition-colors">Dashboard</Link>
+            <Link href="/dashboard/elections" className="text-sm font-bold uppercase tracking-wide text-[var(--ndc-black)] hover:text-[var(--ndc-red-primary)] transition-colors">Elections</Link>
+            <Link href="/dashboard/activities" className="text-sm font-bold uppercase tracking-wide text-[var(--ndc-black)] hover:text-[var(--ndc-red-primary)] transition-colors">Activities</Link>
+            <Link href="/dashboard/executives" className="text-sm font-bold uppercase tracking-wide text-[var(--ndc-black)] hover:text-[var(--ndc-red-primary)] transition-colors">Executives</Link>
           </nav>
         )}
         <nav className="flex items-center gap-2">
           <div className="md:hidden">
             <Button variant="ghost" size="icon" aria-label="Open menu" onClick={() => setOpen((v) => !v)}>
-              <Menu className="h-5 w-5" />
+              <Menu className="h-5 w-5 text-[var(--ndc-black)]" />
             </Button>
           </div>
           {showAuthContent && authUser ? (
             <div className="hidden md:flex items-center gap-2">
-              <span className="flex items-center gap-2 text-sm font-semibold">
-                <User className="h-4 w-4" />
+              <span className="flex items-center gap-2 text-sm font-semibold text-[var(--ndc-black)]">
+                <User className="h-4 w-4 text-[var(--ndc-black)]" />
                 {authUser.name}
               </span>
               <Button variant="outline" size="sm" onClick={handleLogout}>
@@ -81,22 +81,22 @@ export default function Navbar() {
           <div className="max-w-7xl mx-auto px-6 py-4 grid gap-1 text-sm">
             {!authUser && (
               <>
-                <Link href="/" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">Home</Link>
-                <Link href="#about" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">About</Link>
-                <Link href="/dashboard/activities" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">Activities</Link>
-                <Link href="/dashboard/executives" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">Executives</Link>
+                <Link href="/" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm text-[var(--ndc-black)] hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">Home</Link>
+                <Link href="#about" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm text-[var(--ndc-black)] hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">About</Link>
+                <Link href="/dashboard/activities" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm text-[var(--ndc-black)] hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">Activities</Link>
+                <Link href="/dashboard/executives" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm text-[var(--ndc-black)] hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">Executives</Link>
               </>
             )}
             {authUser && (
               <>
-                <div className="py-3 px-4 flex items-center gap-2 text-sm font-semibold border-b border-gray-200 mb-1">
-                  <User className="h-4 w-4" />
+                <div className="py-3 px-4 flex items-center gap-2 text-sm font-semibold text-[var(--ndc-black)] border-b border-gray-200 mb-1">
+                  <User className="h-4 w-4 text-[var(--ndc-black)]" />
                   {authUser.name}
                 </div>
-                <Link href="/dashboard" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">Dashboard</Link>
-                <Link href="/dashboard/elections" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">Elections</Link>
-                <Link href="/dashboard/activities" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">Activities</Link>
-                <Link href="/dashboard/executives" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">Executives</Link>
+                <Link href="/dashboard" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm text-[var(--ndc-black)] hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">Dashboard</Link>
+                <Link href="/dashboard/elections" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm text-[var(--ndc-black)] hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">Elections</Link>
+                <Link href="/dashboard/activities" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm text-[var(--ndc-black)] hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">Activities</Link>
+                <Link href="/dashboard/executives" onClick={() => setOpen(false)} className="py-3 px-4 rounded-sm text-[var(--ndc-black)] hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase">Executives</Link>
                 <button
                   onClick={() => { handleLogout(); setOpen(false); }}
                   className="py-3 px-4 rounded-sm hover:bg-[var(--ndc-red-primary)]/10 hover:text-[var(--ndc-red-primary)] transition-colors font-bold uppercase text-left flex items-center gap-2 text-[var(--ndc-red-primary)]"
